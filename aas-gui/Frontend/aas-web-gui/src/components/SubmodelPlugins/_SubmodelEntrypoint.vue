@@ -13,6 +13,9 @@
             <ImagePreview v-if="submodelElementData.mimeType && submodelElementData.mimeType.includes('image')" :submodelElementData="submodelElementData"></ImagePreview>
             <PDFPreview v-if="submodelElementData.mimeType && submodelElementData.mimeType.includes('pdf')" :submodelElementData="submodelElementData"></PDFPreview>
         </template>
+        <template v-if="SelectedNode && Object.keys(SelectedNode).length > 0 && Object.keys(submodelElementData).length > 0">
+            <JSONArrayProperty v-if="checkSubmodelElementIdShort('PRESSURE_HISTOGRAM')" :submodelElementData="submodelElementData"></JSONArrayProperty>
+        </template>
     </v-container>
 </template>
 
@@ -76,6 +79,10 @@ export default defineComponent({
                 }
             });
             return result;
+        },
+        // Function to check if the idShort of a SubmodelElement matches the given idShort
+        checkSubmodelElementIdShort(idShort: string): boolean {
+            return this.submodelElementData.idShort === idShort;
         },
     },
 });
