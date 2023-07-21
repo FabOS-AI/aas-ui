@@ -4,6 +4,7 @@
         <template v-if="SelectedNode && Object.keys(SelectedNode).length > 0 && Object.keys(submodelElementData).length > 0 && submodelElementData.semanticId && submodelElementData.semanticId.keys && submodelElementData.semanticId.keys.length > 0">
             <HTWFuehrungskomponente v-if="checkSemanticId('http://htw-berlin.de/smc_statemachine')" :submodelElementData="submodelElementData" :selectedNode="selectedNode"></HTWFuehrungskomponente>
             <DigitalNameplate v-if="checkSemanticId('https://admin-shell.io/zvei/nameplate/1/0/Nameplate')" :submodelElementData="submodelElementData"></DigitalNameplate>
+            <DigitalNameplate v-if="checkSemanticId('https://admin-shell.io/zvei/nameplate/2/0/Nameplate')" :submodelElementData="submodelElementData"></DigitalNameplate>
             <JSONArrayProperty v-if="checkSemanticId('http://iese.fraunhofer.de/prop_jsonarray')" :submodelElementData="submodelElementData"></JSONArrayProperty>
             <!-- Plugins added by the user are dynamically registered here -->
             <component v-for="(plugin, i) in filteredPlugins" :key="i" :is="plugin.name" :submodelElementData="submodelElementData"></component>
